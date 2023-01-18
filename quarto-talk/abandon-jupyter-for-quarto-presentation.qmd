@@ -1,0 +1,292 @@
+---
+title: Abandon Jupyter and embrace Quarto
+subtitle: Effective data science communication
+author: "Arturo Regalado"
+date: "10 Jan 2023"
+format:
+ revealjs:
+    theme: [simple, custom.scss]
+    width: 1600
+    height: 900
+    slide-number: true
+    preview-links: true
+---
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+# Poll
+
+## About me
+
+:::{.fragment}
+- Economist and data analyst/scientist for about 10 years now. 
+
+- About to finish a PhD in Economics with Aberdeen Uni. 
+
+- By no means an expert programmer or software engineer, I use the tools that suit my requirements. 
+
+- Always eager to learn best practices and new tips. 
+
+- Used most programming languages associated with data. 
+:::
+
+:::{.fragment}
+Contact details:
+
+Twitter: [@arturoregalado](https://twitter.com/arturoregalado)
+
+[LinkedIn](https://www.linkedin.com/in/arturoregalado/)
+
+E-mail: art.regalado@gmail.com
+:::
+
+
+# The star of the show:
+
+![](./assets/quarto.png){.absolute top=200 left=500 width="430" height="350"}
+
+## A brief story:
+
+:::::{.columns}
+
+::::{.column width="70%"}
+
+:::{.fragment}
+Need to bring my toxic data science ex girlfriend:
+:::
+
+:::{.fragment}
+![](./assets/r_logo.png){.absolute top=300 left=250 width="350" height="300"}
+:::
+
+::::
+
+::::{.column width="30%"}
+
+:::{.fragment}
+![](https://media.tenor.com/W_iAZy_edGAAAAAM/patrick-star.gif){.absolute top=300 left=800 width="350" height="300"}
+:::
+
+::::
+:::::
+
+:::{.fragment}
+[Don't worry, she won't bite you. The reason I needed her was R Markdown!]{.absolute top=750 left=0}
+:::
+
+
+# Abandon Jupyter!
+
+:::{.fragment}
+[When it is not the correct tool.]{.red-emphasis}
+:::
+
+:::{.fragment}
+[When to use notebooks?]{.green-emphasis}
+:::
+
+## That's it...
+![](https://thumbs.gfycat.com/VapidAdorableApisdorsatalaboriosa-max-1mb.gif){.absolute top=300 left=500 width="650" height="400"}
+
+# The sales pitch
+
+:::{.fragment}
+Notebooks have [drawbacks]{.red-emphasis} when used to [communicate data analysis and develop code]{.red-emphasis}.
+:::
+
+::: {.notes}
+A common use of notebooks is to teach python coding. With presentations (reveal.js and Quarto) you can show to code incrementally.  
+
+Better yet why not use Visual studio interactive code functionality or pycharm SciView or IPython. 
+
+Access to all the functionality of an IDE.
+
+Version control: it is a text file so you can use git.
+:::
+
+
+## Case use 1: {auto-animate="true"}
+
+[Teaching or showcasing](.green-emphasis) python packages or procedures for data science.
+
+As an example let me teach you basic matplotlib^[[Matplotlib API Reference](https://matplotlib.org/stable/api/index.html)]:
+
+```{python}
+#| echo: true
+x = np.array([0,1,2,3,4,5,6])
+y = np.random.randint(low=20, high=50, size=7)
+plt.plot(x,y)
+plt.show()
+```
+
+## Case use 1: {auto-animate="true"}
+
+[Teaching or showcasing](.green-emphasis) python packages or procedures for data science.
+
+As an example let me teach you basic matplotlib:
+
+
+```{python}
+#| echo: true
+x = np.array([0,1,2,3,4,5,6])
+y = np.random.randint(low=20, high=50, size=7)
+plt.plot(x,y)
+plt.title("This is my title")
+plt.xlabel("Sequence X")
+plt.ylabel("Random numbers")
+plt.show()
+```
+
+## Now with tabs
+::: {.panel-tabset}
+
+### Code
+
+```{python}
+#| echo: true
+#| output: false
+import numpy as np
+import matplotlib.pyplot as plt
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={"projection": "polar"})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+### Result
+
+```{python}
+#| echo: false
+import numpy as np
+import matplotlib.pyplot as plt
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={"projection": "polar"})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+:::
+
+
+:::{.notes}
+- Quarto can do this in a better way. Excellent features to teach coding.  
+- Communciation is cross platform and easy top share. 
+- Embed explanations, code, and results
+:::
+
+## Line highlighting
+
+```{.python code-line-numbers="8,9,10"}
+#| echo: true
+#| output: false
+import numpy as np
+import matplotlib.pyplot as plt
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={"projection": "polar"})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+## Case use 2: 
+
+Exploratory data analyisis and interactive coding. 
+
+[Why not]{.green-emphasis}:
+
+:::{.fragment}
+![](assets/pycharm_logo.png){.absolute top=300 left=350 width="300" height="300"}
+:::
+
+:::{.fragment}
+![](assets/code_logo.png){.absolute top=300 left=750 width="300" height="300"}
+:::
+
+
+:::{.notes}
+- Why not use a fully functional IDE like Visual Studio Code or Pycharm. 
+- Access to linters, type hints. 
+- Pycharm in particular has excellent refactoring capabilities. 
+:::
+
+## Case use 3 (very extreme):
+
+[Some users actually develop full libraries.]{.red-emphasis} 
+
+They are [crazy!]{.red-emphasis}
+Leads to nightmares in the following:
+
+- Testing (perhaps they don't actullay do automated testing)
+- Refactoring
+- Object oriented programming
+- Production and deployment
+- Communicating results
+- Let's see an example with an [analysis](https://github.com/artregalado/forecasting-oil-price/blob/master/forecaste_mexican_oil_price.ipynb) I performed.
+
+:::{.notes}
+- We all have heard of the difficulties of translating notebooks to code for production. 
+- It also encourages terrible software development habits.
+:::
+
+## Case use 4:
+
+Combining narrative and analysis.
+
+:::{.fragment}
+[Well, this is where Quarto shines!]{.green-emphasis} 
+:::
+
+:::{.fragment}
+- Now even better than R Markdown. 
+- The same company develops both.
+:::
+
+:::{.fragment}
+Let's see an example of recent personal use...
+:::
+
+:::{.notes}
+- Ok if you share with team...but what happens when you have to communicate with leadership.
+- Sharing insights with stakeholders.
+:::
+
+## Recap
+
+:::{.fragment}
+We've seen some powerful stuff
+![](https://media.tenor.com/tpmaM5Jf7M0AAAAC/mind-blown.gif){.absolute top=300 left=750 width="400" height="400"}
+:::
+
+## Recap
+![](./assets/quarto.png){.absolute top=5 left=250}
+
+:::{.incremental}
+1. Is it good for communication? Well...yes. I've been doing this since the beginning.
+2. Learn by using interactive coding features.
+3. Share static documents with different stakeholders. 
+4. Incentive to learn better software development practices. 
+5. I just scratched the surface. Quarto has many more capabilites. See more on their [webpage](https://quarto.org/).
+:::
+
+# Thank you!
+Let's practice Quarto!
+
+## Files for challenges
+
+1. Go to the Github page of the Python Aberdeen User Group or my Repository and download the foler. 
+  + Link to my repository `https://github.com/artregalado/python-talks`
+
+  + Link to the Python user group `https://github.com/PythonAberdeen/user_group/tree/master/2023-01`
+2. Open the file `quarto_challenge.html` for the instructions. 
+3. In the repository folder you will find the source code for everything I showed today, including the presentation. 

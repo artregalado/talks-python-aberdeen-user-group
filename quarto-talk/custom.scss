@@ -1,0 +1,57 @@
+/*-- scss:defaults --*/
+$theme-lightgray: #E1E8EB;
+$theme-green: #7cffc3 ;
+$theme-blue: #2471A3;
+$theme-white: #F7F8F9;
+$theme-yellow: #F4BA02;
+$theme-red: #E74C3C;
+$theme-darkblue: #01364C;
+
+$body-bg: $theme-darkblue;
+$body-color: $theme-white;
+$link-color: $theme-green;
+
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+
+
+$font-family-sans-serif: 'Manrope', sans-serif;
+$presentation-heading-font: 'IBM Plex Serif', serif;
+
+
+/*-- scss:rules --*/
+
+.blue-emphasis {
+    color: $theme-blue;
+    font-weight: bold;
+  }
+  
+.yellow-emphasis {
+    color: $theme-yellow;
+    font-weight: bold;
+}
+
+.green-emphasis {
+    color: $theme-green;
+    font-weight: bold;
+}
+
+.red-emphasis {
+  color: $theme-red;
+  font-weight: bold;
+}
+
+.square {
+    color: #555;
+    height: 50px;
+    width: 50px;
+    background-color: #555;
+  }
+
+.presentation-title {
+  font-weight: 600;
+  font-size: large;
+  font-family: $presentation-heading-font;
+}
